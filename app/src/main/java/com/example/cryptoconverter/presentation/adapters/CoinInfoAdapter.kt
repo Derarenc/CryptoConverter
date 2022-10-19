@@ -24,7 +24,11 @@ class CoinInfoAdapter(
         return CoinInfoViewHolder(binding)
     }
 
+
     override fun onBindViewHolder(holder: CoinInfoViewHolder, position: Int) {
+        // FIXME Лучше создать в CoinInfoViewHolder метод bind и перенести эту туда логику.
+        //  Тогда CoinInfoViewHolder сам будем отвечать за свою настройку и облегчит текущий класс.
+        //  Здесь останется только вызов holder.bind()
         val coin = getItem(position)
         val lastUpdateTemplate = context.resources.getString(R.string.last_update_template)
         Picasso.get().load(coin.url).into(holder.binding.ivLogoCoin)

@@ -44,12 +44,19 @@ class CoinRepositoryImpl @Inject constructor(
                 coinInfoListDto?.let {
                     coinInfoDao.insertCoinInfoList(
                         it.map {
+                            // FIXME Minor Один it перекрывает другой it.
+                            //  В таких ситуациях лучше их именовать.
                             coinInfoMapper.mapDtoToDbModel(it)
                         }
                     )
                 }
+                // FIXME Exception слишком общий тип для обработки.
+                //  Ловя Exception ты ловишь и CancellationException, который необходим для остановки корутины.
+                //  Его ловить нельзя.
             } catch (e: Exception) {
+                // FIXME Нужна обработка исключения. Как пользователь поймет, что у него не подгрузились данные?
             }
+            // FIXME Такого в боевом коде быть не должно
             delay(10000)
         }
     }

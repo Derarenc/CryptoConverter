@@ -30,5 +30,7 @@ abstract class AppDatabase : RoomDatabase() {
         }
     }
 
+    // FIXME Метод почти всегда обозначает действие, поэтому в названии должен присутствовать глагол.
+    //  getCoinsInfoDao(): CoinInfoDao
     abstract fun coinsInfoDao(): CoinInfoDao
 }

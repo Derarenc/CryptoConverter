@@ -4,6 +4,7 @@ import com.example.cryptoconverter.data.sharedprefs.model.CoinPriseConversionSha
 
 interface CoinPriseConversionStorage {
 
+    // FIXME Minor Обычно стараются давать парные именования get/set, read/update
     fun save(coinPriseConversionSharedPrefs: CoinPriseConversionSharedPrefs)
 
     fun get(): CoinPriseConversionSharedPrefs

@@ -34,6 +34,7 @@ class CoinConvertActivity : AppCompatActivity() {
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
+    // FIXME Обычно для каждого экрана создают свою вьюмодель
     private val viewModel by lazy {
         ViewModelProvider(this, viewModelFactory)[CoinViewModel::class.java]
     }
@@ -56,6 +57,8 @@ class CoinConvertActivity : AppCompatActivity() {
         val idCoin = intent.getIntExtra(EXTRA_ID_COIN, DEFAULT_ID_COIN)
         val amountDefault = binding.edtAmountCurrencyToConvert.hint.toString().toDouble()
 
+        // FIXME Здесь нужно раскидать логику по приватным методом.
+        //  Сейчас код внизу выглядит неаккуратным.
         viewModel.getCoinInfo(idCoin).observe(this) {
             with(binding) {
                 Picasso.get().load(it.url).into(ivLogoCoin)

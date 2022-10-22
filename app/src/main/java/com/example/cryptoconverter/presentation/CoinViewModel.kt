@@ -21,6 +21,8 @@ class CoinViewModel @Inject constructor(
         }
     }
 
+    // FIXME Следует указывать тип поля класса.
+    //  coinInfoList: LiveData<List<CoinInfo>>
     val coinInfoList = getCoinInfoListUseCase()
     val coinPriseConversion = getCoinPriseConversionUseCase()
 
